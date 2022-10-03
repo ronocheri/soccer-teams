@@ -23,7 +23,7 @@ function randomizeTeams()
                     <tr>
                         {
                             props.teamsList.map((player, index) => (
-                            <td key={index}>{index+1}: {player.fName+" "+player.lName+" Rank:"+player.rank+" Team:"+player.teamId} {index+1<props.teamsList.length?'|':''} </td>
+                            <td key={index}>{index+1}: {player.fName+" "+player.lName} {index+1<props.teamsList.length?'|':''} </td>
                             ))
                         }
                     </tr>

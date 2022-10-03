@@ -8,59 +8,80 @@ function ChoosePlayers(props) {
     const [rank, setRank] = useState(1);
     const [showResults, setShowResults] = useState(false);
    const [playersList, setPlayersList]= useState([]);
-   
-     //const [checked, setChecked] = useState([]);
-     const PLAYERS=PlayersData
+   const [playersListPerRank, setPlayersListPerRank]= useState([]);
+   //const [rankedPlayers, setRankedPlayers]= useState([]);
+
+   const NUMBER_OF_PLAYERS_IN_TEAM=5
+
+    const PLAYERS=PlayersData //json file
 
     function goNext(event) {
+       
 
-        //Add this rank list
-        // setListOfPlayersList(current => [...current, playersList]);
-        // console.log(listOfplayersList)
+        if(playersListPerRank.length>props.numOfTeams)
+            alert("You have to remove " + (playersListPerRank.length-props.numOfTeams) +" players from the list")
+        else if(playersListPerRank.length<props.numOfTeams)
+            alert("You have to add  " + (props.numOfTeams-playersListPerRank.length) +" more players")
+        else
+        {
+            //const tempList=[...playersListPerRank,...playersList]
+            randomizeTeams()
+           // setPlayersList(tempList) //add the ranked players list to all players list
+           
+            //setPlayersListPerRank([]) //clear the ranked players list
 
-        setShowResults(true)
-
+            if(rank!==5)
+            {
+                //at the end go to the next rank
+                setRank(rank+1)
+            }
+            else{
+                setShowResults(true)
+            }
+        }      
     }
 
-    // function addPlayer(player)
-    // {
-        
-    //     console.log(player)
-    //     const newPlayersList=[player,...listOfplayersList]
-    //     setListOfPlayersList(newPlayersList)
-    //     console.log(newPlayersList)
-    //     //setToAdd(false)
-    //     //props.changePlayersList(playerID)
-    // }
+    function randomizeTeams()
+    {
+        //const tempList=[...playersListPerRank,...playersList]
+        //const tempArray=[...playersListPerRank];
+        const tempArray=[];
 
-    // function removePlayer(playerID)
-    // {
+        for(let i=1;i<=props.numOfTeams;i++)
+        {
+            let randomIndex = Math.floor((Math.random() * playersListPerRank.length)); //a random player (index)
+            playersListPerRank[randomIndex].teamId=i;
+            tempArray.push(playersListPerRank[randomIndex])
+            playersListPerRank.splice(randomIndex, 1)
+        }
         
-    //     console.log(playerID)
-    //     const newPlayersList=[...listOfplayersList].filter(player=>player.id!==playerID)
-    //     setListOfPlayersList(newPlayersList)
-    //     console.log(newPlayersList)
-    //     //setToAdd(false)
-    //     //props.changePlayersList(playerID)
-    // }
+            const tempList=[...tempArray,...playersList]
+            setPlayersList(tempList) //add the ranked players list to all players list
+            setPlayersListPerRank([]) //clear the ranked players list
+    }
 
-    const AllPlayers = PLAYERS.map((player, index)=>
+    const AllPlayers = PLAYERS.filter(p=>p.rank===rank).map((player, index)=>
     {
         return (
                 <tr key={index}>
                     <td key={index}>
-                        <PlayerDetails player={player} playersList={playersList} changedPlayerList={setPlayersList}/>
+                        <PlayerDetails player={player} playersList={playersListPerRank} changedPlayerList={setPlayersListPerRank}/>
                     </td>
                 </tr>
         )
     }
+
+    
 )
+
+//const rankedPlayers=[...AllPlayers].filter(p=>p.rank!==rank)
 
     return (
         <div>
             {!showResults && <div>
                 <h1>Choose Players</h1>
-                <h4>You have to choose {props.numOfTeams} teams ({props.numOfTeams*5} players)</h4>
+                <h4>You have to choose ({props.numOfTeams} players) from rank {rank}</h4>
+                <h5>Number of players: {playersListPerRank.length}</h5>
                 <table>
                     <tbody>   
                    {AllPlayers}

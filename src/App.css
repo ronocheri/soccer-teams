@@ -68,6 +68,11 @@ input{
   font-size: 20 px;
 }
 
+input[type="number"]
+{
+    font-size:20px;
+}
+
 table{
   display: flex;
   justify-content: center;

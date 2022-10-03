@@ -27,6 +27,7 @@ function StartingPage() {
            <input type="number" pattern="[2-4]*"
      value={numOfTeams} onInput={handleChange} />
 
+     <br/>
      <button onClick={goNext}>Next</button>
         </div>}
         {!showMainScreen && <ChoosePlayers numOfTeams={numOfTeams} />}
