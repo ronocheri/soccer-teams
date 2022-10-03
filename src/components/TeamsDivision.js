@@ -16,23 +16,31 @@ function randomizeTeams()
 
 //teamsList
     return (
-        <div>
-            <h1>Teams Division</h1>
-            <table>
-                <tbody>
-                    <tr>
-                        {
-                            props.teamsList.map((player, index) => (
-                            <td key={index}>{index+1}: {player.fName+" "+player.lName+" Rank:"+player.rank+" Team:"+player.teamId} {index+1<props.teamsList.length?'|':''} </td>
-                            ))
-                        }
-                    </tr>
-                </tbody>
-            </table>
+      <div>
+        <h1>Teams Division</h1>
+        <table>
+          <tbody>
+            <tr>
+              {props.teamsList.map((player, index) => (
+                <td key={index}>
+                  {index + 1}:{" "}
+                  {player.fName +
+                    " " +
+                    player.lName +
+                    " Rank:" +
+                    player.rank +
+                    " Team:" +
+                    player.teamId}{" "}
+                  {index + 1 < props.teamsList.length ? "|" : ""}{" "}
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
 
-            <button onClick={goBackFunc}>Go Back</button>
-        </div>
-    )
+        <button onClick={goBackFunc}>Go Back</button>
+      </div>
+    );
 }
 
 export default TeamsDivision;
