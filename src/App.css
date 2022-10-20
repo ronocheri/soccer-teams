@@ -75,11 +75,22 @@ input[type="number"]
 
 table{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
+  /* min-height: 50vh; */
   text-align: center;
   font-size: 24px;
+  
+}
+ 
+th {
+  padding-right: 42px;
+  text-align: left;
+}
+
+td {
+  padding-right: 14px;
 }
 
 .checkBoxPlayer
@@ -87,3 +98,4 @@ table{
   width: 24px;
    height: 24px;
 }
+

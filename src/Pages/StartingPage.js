@@ -24,7 +24,7 @@ function StartingPage() {
         <div>
         {showMainScreen && <div>
            <h1>How many teams are particpating in this game?</h1>
-           <input type="number" pattern="[2-4]*"
+           <input  type="number" pattern="[2-4]*"
      value={numOfTeams} onInput={handleChange} />
 
      <br/>

@@ -42,15 +42,24 @@ function goBackFunc()
       <div>
         <h1>Teams Division</h1>
               
-              <h3>Team A</h3>
+              <h3 style={{marginBottom:"0px"}}>Team A</h3>
               <table>
+              <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+              </tr>
+            </thead>
                   <tbody>
               {props.teamsList.sort((p1, p2) => parseFloat(p1.rank) - parseFloat(p2.rank))
               .filter(p=>p.teamId===1).map((player, index)=>(
                 
-                    <tr key={index}>  
+                    <tr key={index}>
+                      <td key={"rank"+index}>
+                        {player.rank}
+                      </td>  
                       <td key={index}>
-                        {player.fName+" "+player.lName+"("+player.rank }{") "}
+                        {player.fName+" "+player.lName}
                       </td>
                   </tr>
                  
@@ -58,17 +67,26 @@ function goBackFunc()
               </tbody>
             </table>
 
-            <h3>Team B</h3>
-              <table>
-                 <tbody>
+            <h3 style={{marginBottom:"0px"}}>Team B</h3>
+            <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+              </tr>
+            </thead>
+                  <tbody>
               {props.teamsList.sort((p1, p2) => parseFloat(p1.rank) - parseFloat(p2.rank))
               .filter(p=>p.teamId===2).map((player, index)=>(
                  
-                   <tr key={index}>  
+                <tr key={index}>
+                <td key={"rank"+index}>
+                  {player.rank}
+                </td>  
                 <td key={index}>
-                  {player.fName +" " +player.lName+"("+player.rank}{") "}
+                  {player.fName+" "+player.lName}
                 </td>
-                </tr>
+            </tr>
                  
               ))} 
               </tbody>
@@ -79,14 +97,23 @@ function goBackFunc()
             :""}
             {props.numOfTeams>=3? 
             
-              <table>
-              <tbody>
+            <table>
+              <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+              </tr>
+            </thead>
+            <tbody>
               {props.teamsList.filter(p=>p.teamId===3).map((player, index)=>(
-                  <tr key={index}>  
-                <td key={index}>
-                  {player.fName+" " +player.lName+"("+player.rank}{") "}
-                </td> 
-                 </tr>
+                 <tr key={index}>
+                 <td key={"rank"+index}>
+                   {player.rank}
+                 </td>  
+                 <td key={index}>
+                   {player.fName+" "+player.lName}
+                 </td>
+             </tr>
                 
               ))
             }
@@ -100,13 +127,22 @@ function goBackFunc()
 
             {props.numOfTeams===4? 
             <table>
-              <tbody>
+              <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player</th>
+              </tr>
+            </thead>
+            <tbody>
               {props.teamsList.filter(p=>p.teamId===4).map((player, index)=>(
                  <tr key={index}>
-                <td key={index}>
-                  {player.fName+" "+player.lName+"(" +player.rank}{") "}
-                </td>
-                </tr>
+                 <td key={"rank"+index}>
+                   {player.rank}
+                 </td>  
+                 <td key={index}>
+                   {player.fName+" "+player.lName}
+                 </td>
+             </tr>
               ))}
               </tbody>
             </table>
