@@ -38,7 +38,7 @@ function PlayerDetails(props) {
         <div>
             <h3>{props.player.fName+" "+props.player.lName}</h3>
             <p>Rank: {props.player.rank}</p>
-            <img src={props.player.imageURL} alt={props.player.imageURL}></img>
+            <img src={props.player.imageURL} alt={props.player.imageURL} ></img>
             <input type="checkbox" onChange={handleCheckBoxClick} id={props.player.id} className='checkBoxPlayer' defaultChecked={false}></input>
             {/* {toAdd &&<button id={props.player.id} onClick={addPlayer}>+</button>}<br/>
             {!toAdd &&<button onClick={deletePlayer}>-</button>} */}

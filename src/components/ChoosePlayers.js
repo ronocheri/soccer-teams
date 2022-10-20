@@ -89,7 +89,7 @@ function ChoosePlayers(props) {
                 </table>
                 <button onClick={goNext}>Next</button>  
             </div>}
-                {showResults && <TeamsDivision teamsList={playersList}/>}
+                {showResults && <TeamsDivision teamsList={playersList} numOfTeams={props.numOfTeams}/>}
         </div>
         
     )
