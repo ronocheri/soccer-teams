@@ -24,11 +24,7 @@ function ChoosePlayers(props) {
             alert("You have to add  " + (props.numOfTeams-playersListPerRank.length) +" more players")
         else
         {
-            //const tempList=[...playersListPerRank,...playersList]
             randomizeTeams()
-           // setPlayersList(tempList) //add the ranked players list to all players list
-           
-            //setPlayersListPerRank([]) //clear the ranked players list
 
             if(rank!==5)
             {
@@ -43,8 +39,6 @@ function ChoosePlayers(props) {
 
     function randomizeTeams()
     {
-        //const tempList=[...playersListPerRank,...playersList]
-        //const tempArray=[...playersListPerRank];
         const tempArray=[];
 
         for(let i=1;i<=props.numOfTeams;i++)
@@ -69,12 +63,8 @@ function ChoosePlayers(props) {
                     </td>
                 </tr>
         )
-    }
-
-    
+    }    
 )
-
-//const rankedPlayers=[...AllPlayers].filter(p=>p.rank!==rank)
 
     return (
         <div>
