@@ -29,8 +29,8 @@ body, html {
 
 
 body {
-  background-color: #369c73;
-  display: flex;
+  background-color: #ffffff;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   min-height: 50vh;
@@ -46,7 +46,6 @@ nav{
   display: flex;
   align-items: center;
   padding: 10px 20 px;
-  background-color: #0e3525;
   color: aliceblue;
 }
 
@@ -105,6 +104,35 @@ td {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #5c8ce6;
-  padding: 0 5%;
+  background-color: #4cb563;
+  /* padding: 0 5%; */
+}
+
+.header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.header li {
+  margin-left: 3rem;
+}
+
+.header a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #fcf0f5;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: white;
+}
+
+nav ul li
+{
+  cursor: pointer;
 }

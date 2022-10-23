@@ -15,7 +15,7 @@ function NewPlayerForm(props) {
     const imageURL = imageInputRef.current.value;
     const rank=rankInputRef.current.value;
 
-    const meetupData = {
+    const playerData = {
       id: 0,
       imageURL: imageURL,
       fName: fName,
@@ -24,8 +24,8 @@ function NewPlayerForm(props) {
       teamId:0
     };
 
-    props.onAddPlayer(props.playersList);
-    //props.onAddMeetup(meetupData);
+    props.onAddPlayer(playerData);
+    //props.onAddPlayer(props.playersList);
   }
 
   return (

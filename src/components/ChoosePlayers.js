@@ -9,7 +9,6 @@ function ChoosePlayers(props) {
     const [showResults, setShowResults] = useState(false);
    const [playersList, setPlayersList]= useState([]);
    const [playersListPerRank, setPlayersListPerRank]= useState([]);
-   //const [rankedPlayers, setRankedPlayers]= useState([]);
 
    const NUMBER_OF_PLAYERS_IN_TEAM=5
 
