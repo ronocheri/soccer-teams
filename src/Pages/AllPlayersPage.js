@@ -27,7 +27,9 @@ function AllPlayersPage() {
                 ...data[key]
               };
     
-              players.push(player);
+              //console.log(player)
+              if(player.id!='0' )
+                players.push(player);
             }
     
             setIsLoading(false);
