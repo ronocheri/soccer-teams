@@ -19,7 +19,7 @@ function MainNavigation()
         <ul>
             <li onClick={event => moveToPage('')}><HomeIcon sx={{ fontSize: 40, color: "white" }}/>Home</li>
             <li onClick={event => moveToPage('/addPlayer')}><PersonAdd sx={{ fontSize: 40, color: "white" }}/>Add Player</li>
-            <li onClick={event => moveToPage('/playersList')}><People sx={{ fontSize: 40, color: "white" }}/>Player list</li>
+            <li onClick={event => moveToPage('/playersList')}><People sx={{ fontSize: 40, color: "white" }}/>Players list</li>
         </ul>
     </nav>
     </header>

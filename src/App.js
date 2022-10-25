@@ -5,6 +5,7 @@ import StartingPage from './Pages/StartingPage';
 import AddPlayerPage from './Pages/AddPlayerPage';
 import Layout from './components/Layout';
 import AllPlayersPage from './Pages/AllPlayersPage';
+import EditPlayerPage from './Pages/EditPlayerPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/' exact element={<StartingPage/>}/>
       <Route path='/addPlayer' element={<AddPlayerPage/>}/>
       <Route path='/playersList' element={<AllPlayersPage/>}/>
+      <Route path='/editPlayerPage' element={<EditPlayerPage/>}/>
     </Routes>
     </Layout>
     </BrowserRouter>

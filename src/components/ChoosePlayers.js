@@ -1,18 +1,51 @@
 
-import React, { useState } from 'react';
+import React,{ useEffect, useState } from "react";
 import TeamsDivision from './TeamsDivision';
-import PlayersData from "../DB/PlayersData";
 import PlayerDetails from "./PlayerDetails";
+import Loading from "./Loading";
 
 function ChoosePlayers(props) {
     const [rank, setRank] = useState(1);
     const [showResults, setShowResults] = useState(false);
    const [playersList, setPlayersList]= useState([]);
    const [playersListPerRank, setPlayersListPerRank]= useState([]);
+   const [isLoading, setIsLoading] = useState(true);
+   const [loadedPlayers, setLoadedPlayers] = useState([]);
 
    const NUMBER_OF_PLAYERS_IN_TEAM=5
+    //const PLAYERS=PlayersData //json file
 
-    const PLAYERS=PlayersData //json file
+
+
+      useEffect(() => {
+        setIsLoading(true);
+        fetch(
+          'https://teamscreator-f003c-default-rtdb.firebaseio.com/players.json',
+        )
+          .then((response) => {
+            //console.log(response)
+            return response.json();
+          })
+          .then((data) => {
+            const players = [];
+
+            for (const key in data) {
+              const player = {
+                id: key,
+                ...data[key]
+              };
+    
+              players.push(player);
+            }
+    
+            setIsLoading(false);
+            setLoadedPlayers(players);
+          });
+      }, []);
+    
+      if (isLoading) {
+        return ( <Loading/>);
+      }
 
     function goNext(event) {
        
@@ -53,7 +86,7 @@ function ChoosePlayers(props) {
             setPlayersListPerRank([]) //clear the ranked players list
     }
 
-    const AllPlayers = PLAYERS.filter(p=>p.rank===rank).map((player, index)=>
+    const AllPlayers = loadedPlayers.filter(p=>p.rank===rank).map((player, index)=>
     {
         return (
                 <tr key={index}>

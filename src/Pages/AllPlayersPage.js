@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loading from "../components/Loading";
 import PlayerDetails from "../components/PlayerDetails";
 import ScrollToTop from "../components/ScrollToTop";
 
@@ -35,11 +36,12 @@ function AllPlayersPage() {
       }, []);
     
       if (isLoading) {
-        return (
-          <section>
-            <p>Loading...</p>
-          </section>
-        );
+        // return (
+        //   <section>
+        //     <p>Loading...</p>
+        //   </section>
+        // );
+        return (<Loading/>)
       }
 
       return (

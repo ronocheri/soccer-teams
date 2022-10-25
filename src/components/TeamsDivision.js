@@ -43,7 +43,7 @@ function goBackFunc()
         <h1>Teams Division</h1>
               
               <h3 style={{marginBottom:"0px"}}>Team A</h3>
-              <table>
+              <table id="#divisionTbl">
               <thead>
               <tr>
                 <th>Rank</th>
@@ -55,7 +55,7 @@ function goBackFunc()
               .filter(p=>p.teamId===1).map((player, index)=>(
                 
                     <tr key={index}>
-                      <td key={"rank"+index}>
+                      <td key={"rank"+index} align="left">
                         {player.rank}
                       </td>  
                       <td key={index}>
@@ -80,7 +80,7 @@ function goBackFunc()
               .filter(p=>p.teamId===2).map((player, index)=>(
                  
                 <tr key={index}>
-                <td key={"rank"+index}>
+                <td key={"rank"+index} align="left">
                   {player.rank}
                 </td>  
                 <td key={index}>
@@ -107,7 +107,7 @@ function goBackFunc()
             <tbody>
               {props.teamsList.filter(p=>p.teamId===3).map((player, index)=>(
                  <tr key={index}>
-                 <td key={"rank"+index}>
+                 <td key={"rank"+index} align="left">
                    {player.rank}
                  </td>  
                  <td key={index}>
@@ -136,7 +136,7 @@ function goBackFunc()
             <tbody>
               {props.teamsList.filter(p=>p.teamId===4).map((player, index)=>(
                  <tr key={index}>
-                 <td key={"rank"+index}>
+                 <td key={"rank"+index} align="left">
                    {player.rank}
                  </td>  
                  <td key={index}>

@@ -1,10 +1,48 @@
-import { useRef } from 'react';
+import { useRef,useEffect, useState } from "react";
+import Loading from "./Loading";
 
 function NewPlayerForm(props) {
   const fnameInputRef = useRef();
   const lnameInputRef = useRef();
   const imageInputRef = useRef();
   const rankInputRef = useRef();
+  const [rank, setRank] = useState(1);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedPlayers, setLoadedPlayers] = useState([]);
+  const [nextId,setNextId]=useState(0);
+
+  //getting the last id
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(
+      'https://teamscreator-f003c-default-rtdb.firebaseio.com/players.json',
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const players = [];
+
+        for (const key in data) {
+          const player = {
+            id: key,
+            ...data[key]
+          };
+
+          players.push(player);
+        }
+
+        setNextId(players[players.length-1].id+1)
+
+        setIsLoading(false);
+        setLoadedPlayers(players);
+      });
+  }, []);
+
+  if (isLoading) {
+    return ( <Loading/>);
+  }
 
 
   function submitHandler(event) {
@@ -15,9 +53,11 @@ function NewPlayerForm(props) {
     const imageURL = imageInputRef.current.value;
     const rank=rankInputRef.current.value;
 
+    console.log(nextId)
+
     const playerData = {
-      id: 0,
-      imageURL: imageURL,
+      id: nextId,
+      imageURL: "https://fifauteam.com/images/fifa21/cards/small/RegularRareGold.png",
       fName: fName,
       lName: lName,
       rank:rank,
@@ -28,25 +68,58 @@ function NewPlayerForm(props) {
     //props.onAddPlayer(props.playersList);
   }
 
+  //limit the rabk to 1-5
+  const rankChange = event => {
+    if(event.target.value>5)
+      setRank(5)
+    else if(event.target.value<1)
+      setRank(1)
+    else       
+      setRank(event.target.value)
+  }
+
   return (
   
       <form  onSubmit={submitHandler}>
-        <div >
+        <table id="addPlayerTbl">
+          <tbody>
+          <tr>
+            <td>
           <label htmlFor='fname'>First Name</label>
+          </td>
+          <td>
           <input type='text' required id='fname' ref={fnameInputRef} />
-        </div>
-        <div >
+          </td>
+          </tr>
+
+          <tr>
+            <td>
           <label htmlFor='lname'>Last Name</label>
+          </td>
+          <td>
           <input type='text' required id='lname' ref={lnameInputRef} />
-        </div>
-        <div >
+          </td>
+          </tr>
+
+          <tr>
+            <td>
           <label htmlFor='image'>Image</label>
-          <input type='url' required id='image' ref={imageInputRef} />
-        </div>
-        <div >
+          </td>
+            <td>
+          <input type='url'  id='image' ref={imageInputRef} />
+          </td>
+          </tr>
+
+          <tr>
+            <td>
           <label htmlFor='rank'>Rank</label>
-          <input type='text' required id='rank' ref={rankInputRef} />
-        </div>
+          </td>
+          <td>
+          <input type="number" pattern="[1-5]*"  required id='rank' ref={rankInputRef} value={rank} onChange={rankChange}/>
+          </td>
+          </tr>
+          </tbody>
+        </table>
         
         <div >
           <button>Add</button>
