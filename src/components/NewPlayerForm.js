@@ -51,7 +51,7 @@ function NewPlayerForm(props) {
     const fName = fnameInputRef.current.value;
     const lName = lnameInputRef.current.value;
     const imageURL = imageInputRef.current.value;
-    const rank=rankInputRef.current.value;
+    const rank=parseInt(rankInputRef.current.value);
 
     console.log(nextId)
 

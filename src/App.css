@@ -1,4 +1,5 @@
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -119,6 +120,13 @@ td {
 .header li {
   margin-left: 3rem;
 }
+
+@media only screen and (max-width: 600px) {
+  .header li {
+     margin-left: 0rem;
+}
+}
+
 
 .header a {
   text-decoration: none;

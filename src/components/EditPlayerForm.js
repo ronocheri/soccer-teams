@@ -17,7 +17,7 @@ function EditPlayerForm(props) {
       imageURL: imageURL,
       fName: fName,
       lName: lName,
-      rank:rank,
+      rank:parseInt(rank),
       teamId:0
     };
 

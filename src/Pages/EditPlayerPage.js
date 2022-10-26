@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from "../FireBaseConfig.js";
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Realtime Database and get a reference to the service
@@ -15,16 +16,25 @@ const db = getDatabase(app);
 
 
 function EditPlayerPage() {
+  const navigate = useNavigate();
   const { state } = useLocation();
   console.log(state.player);
+
+   //address to Main Menu
+   function goToMainMenu()
+   {
+      navigate('/home');
+   }
 
     function EditPlayerPageHandler(player) {
 
       set(ref(db, 'players/' + player.id), player)
       .then(() => {
-        console.log("Data saved successfully!")
+        alert("Player was edited successfully!")
+          goToMainMenu()
       })
       .catch((error) => {
+        alert("Error!")
         console.log("The write failed...!")
       });
 

@@ -3,6 +3,7 @@ import React,{ useEffect, useState } from "react";
 import TeamsDivision from './TeamsDivision';
 import PlayerDetails from "./PlayerDetails";
 import Loading from "./Loading";
+import ScrollToTop from "./ScrollToTop";
 
 function ChoosePlayers(props) {
     const [rank, setRank] = useState(1);
@@ -36,7 +37,7 @@ function ChoosePlayers(props) {
               };
     
              //console.log(player)
-             if(player.id!='0' )
+             if(player.id!='0' ) 
                 players.push(player);
             }
     
@@ -111,6 +112,7 @@ function ChoosePlayers(props) {
                    {AllPlayers}
                     </tbody>
                 </table>
+                <ScrollToTop/>
                 <button onClick={goNext}>Next</button>  
             </div>}
                 {showResults && <TeamsDivision teamsList={playersList} numOfTeams={props.numOfTeams}/>}

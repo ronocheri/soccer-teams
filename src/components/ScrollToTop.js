@@ -10,7 +10,7 @@ const useStyles=makeStyles((theme)=>
             zIndex:2,
             position:'fixed',
             bottom: '2vh',
-            fontSize:'5vh',
+            fontSize:'40px',
             color:'#4cb563',
             right: "5%"          
         } 

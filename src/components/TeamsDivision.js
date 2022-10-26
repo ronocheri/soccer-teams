@@ -1,9 +1,9 @@
 function TeamsDivision(props) {
     
-function goBackFunc()
-{
-    window.location.reload(false);
-}
+// function goBackFunc()
+// {
+//     window.location.reload(false);
+// }
 
 // //Divide into teams lists
 // function randomizeTeams(teamId)
@@ -150,7 +150,7 @@ function goBackFunc()
 
           
 
-        <button onClick={goBackFunc}>Go Back</button>
+        {/* <button onClick={goBackFunc}>Go Back</button> */}
       </div>
     );
 }

@@ -5,6 +5,7 @@ function StartingPage() {
 
     const [numOfTeams, setTNumOfTeams] = useState(2);
     const [showMainScreen, setShowMainScreen] = useState(false);
+    const [showTeammsScreen, setShowTeammsScreen] = useState(false);
     const [showStartingScreen, setStartingScreen] = useState(true);
 
     //handle number of teams change 
@@ -15,18 +16,31 @@ function StartingPage() {
         else if(event.target.value<2)
             setTNumOfTeams(2)
         else
-            setTNumOfTeams(event.target.value)
+            setTNumOfTeams(event.target.value)            
       }
 
       //handle clicking the next button
       function goNext(event) {
-        setShowMainScreen(false)
+        setShowMainScreen(true)
+        setShowTeammsScreen(false)
       }
 
       //handle clicking the start button
     function startClicked(event) {
-       setStartingScreen(!showStartingScreen)
+        setShowTeammsScreen(true)
+       setStartingScreen(false)
       }
+
+    //handle clicking the cancel button
+    function cancelClicked()
+    {
+        window.location.reload(false);
+    }
+    //   function cancelClicked(event) {
+    //     setStartingScreen(true)
+    //     setShowTeammsScreen(false)
+    //     setShowMainScreen(false)
+    //   }
 
     return (
         <div>
@@ -37,17 +51,25 @@ function StartingPage() {
                     <button onClick={startClicked}>Start </button>
                 </div>}
     
-            {/* Main screen */}
-                {!showStartingScreen && <div>
-                    {showMainScreen && <div>
-                    <h1>How many teams are particpating in this game?</h1>
-                    <input  type="number" pattern="[2-4]*" value={numOfTeams} onInput={handleChange} />
+            {/* Teams choose screen */}
+                {showTeammsScreen && 
+                <div>
+                    <div>
+                        <h1>How many teams are particpating in this game?</h1>
+                        <input  type="number" pattern="[2-4]*" value={numOfTeams} onInput={handleChange} />
 
-                <br/>
-                <button onClick={goNext}>Next</button>
-                    </div>}
-                    {!showMainScreen && <ChoosePlayers numOfTeams={numOfTeams} />}
-            </div>}
+                        <br/>
+                        <button onClick={goNext}>Next</button> <br/>
+                        <button onClick={cancelClicked}>Cancel</button>
+                    </div>
+                 </div>}
+                 {/* Main screen */}
+                 {showMainScreen && <div>
+                    <ChoosePlayers numOfTeams={numOfTeams} /> 
+                    <br/>
+                    <button onClick={cancelClicked}>Main Menu</button>
+                 </div>}
+            
         </div>
     )
 }

@@ -16,6 +16,7 @@ function App() {
     <Layout>
     <Routes>
       <Route path='/' exact element={<StartingPage/>}/>
+      <Route path='/home' exact element={<StartingPage/>}/>
       <Route path='/addPlayer' element={<AddPlayerPage/>}/>
       <Route path='/playersList' element={<AllPlayersPage/>}/>
       <Route path='/editPlayerPage' element={<EditPlayerPage/>}/>

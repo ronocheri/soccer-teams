@@ -3,6 +3,8 @@ import PlayersData from "../DB/PlayersData";
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set } from "firebase/database";
 import firebaseConfig from "../FireBaseConfig.js";
+import { useNavigate } from "react-router-dom";
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -11,7 +13,15 @@ const db = getDatabase(app);
 
 function AddPlayerPage() {
 
+  const navigate = useNavigate();
     //const PLAYERS=PlayersData //json file
+
+        //address to Main Menu
+   function goToMainMenu()
+   {
+    navigate('/home');
+   }
+
 
     function addPlayerHandler(player) {
 //         console.log("AddPlayerPage")
@@ -38,8 +48,11 @@ function AddPlayerPage() {
         set(ref(db, 'players/' + player.id), player)
         .then(() => {
           console.log("Data saved successfully!")
+          alert("Player was added successfully!")
+          goToMainMenu()
         })
         .catch((error) => {
+          alert("Error!")
           console.log("The write failed...!")
         });
   
