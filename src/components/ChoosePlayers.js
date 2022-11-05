@@ -50,6 +50,15 @@ function ChoosePlayers(props) {
         return ( <Loading/>);
       }
 
+    // TO-DO
+    //   function unCheckedCheckBox()
+    //   {
+    //     var checkboxes = document. querySelectorAll('input[type=”checkbox”]');
+    //     for (var checkbox of checkboxes) {
+    //         checkbox. checked = false
+    //     }
+    //   }
+
     function goNext(event) {
        
 
@@ -59,6 +68,7 @@ function ChoosePlayers(props) {
             alert("You have to add  " + (props.numOfTeams-playersListPerRank.length) +" more players")
         else
         {
+            //unCheckedCheckBox() - TO-DO
             randomizeTeams()
 
             if(rank!==5)
@@ -78,6 +88,7 @@ function ChoosePlayers(props) {
 
         for(let i=1;i<=props.numOfTeams;i++)
         {
+            
             let randomIndex = Math.floor((Math.random() * playersListPerRank.length)); //a random player (index)
             playersListPerRank[randomIndex].teamId=i;
             tempArray.push(playersListPerRank[randomIndex])
@@ -87,6 +98,44 @@ function ChoosePlayers(props) {
             const tempList=[...tempArray,...playersList]
             setPlayersList(tempList) //add the ranked players list to all players list
             setPlayersListPerRank([]) //clear the ranked players list
+    }
+
+    //TO-DO
+    function randomAgain()
+    {
+       
+          setIsLoading(true);
+
+          for(let j=1;j<=5;j++) //for each rank
+            {
+                const tempArray=[];
+                for(let i=0;i<playersList.length;i++)
+                {
+                    
+                if(playersList[i].rank===j)
+                    {
+                        tempArray.push(playersList[i])  
+                    }
+                    if(tempArray.length==props.numOfTeams)
+                    {
+                        console.log(tempArray, j)
+                        setPlayersListPerRank(tempArray) //add the ranked players list to all players list
+                        randomizeTeams()
+                        break;
+
+                    }
+                }
+
+            }
+
+            setIsLoading(false);
+            console.log(playersList)
+      
+        if (isLoading) {
+         
+          return (<Loading/>)
+        }
+ 
     }
 
     const AllPlayers = loadedPlayers.filter(p=>p.rank===rank).map((player, index)=>
@@ -115,7 +164,12 @@ function ChoosePlayers(props) {
                 <ScrollToTop/>
                 <button onClick={goNext}>Next</button>  
             </div>}
-                {showResults && <TeamsDivision teamsList={playersList} numOfTeams={props.numOfTeams}/>}
+                {showResults && 
+                <div>
+                    <TeamsDivision teamsList={playersList} numOfTeams={props.numOfTeams}/>
+                    <button onClick={randomAgain} hidden>Random again</button>
+                </div>
+                }
         </div>
         
     )

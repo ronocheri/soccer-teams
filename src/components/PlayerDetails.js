@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 
 function PlayerDetails(props) {
 
+    const [isAdded, setIsAdded] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        setIsAdded(false);
+    }, [props.player.id])
 //click handling functions
     function addPlayer(event)
     {
@@ -24,10 +28,13 @@ function PlayerDetails(props) {
 
     function handleCheckBoxClick(event)
     {
+        setIsAdded(!isAdded);
         if(event.target.checked)
             addPlayer()
         else
             removePlayer()
+
+        
     }
  
     function editPlayerClick(player)
@@ -44,7 +51,7 @@ function PlayerDetails(props) {
             }</h3>
             <p>Rank: {props.player.rank}</p>
             <img src={props.player.imageURL} alt={props.player.imageURL} ></img><br></br>
-            <input type="checkbox" onChange={handleCheckBoxClick} id={props.player.id} className='checkBoxPlayer' defaultChecked={false} hidden={props.hideCheckbox}></input>
+            <input type="checkbox" onChange={handleCheckBoxClick} checked={isAdded} id={props.player.id} className='checkBoxPlayer' hidden={props.hideCheckbox}></input>
             {/* {toAdd &&<button id={props.player.id} onClick={addPlayer}>+</button>}<br/>
             {!toAdd &&<button onClick={deletePlayer}>-</button>} */}
             
