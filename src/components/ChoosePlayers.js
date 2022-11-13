@@ -12,6 +12,7 @@ function ChoosePlayers(props) {
    const [playersListPerRank, setPlayersListPerRank]= useState([]);
    const [isLoading, setIsLoading] = useState(true);
    const [loadedPlayers, setLoadedPlayers] = useState([]);
+   const [query, setQuery] = useState("")
 
    const NUMBER_OF_PLAYERS_IN_TEAM=5
     //const PLAYERS=PlayersData //json file
@@ -138,7 +139,22 @@ function ChoosePlayers(props) {
  
     }
 
-    const AllPlayers = loadedPlayers.filter(p=>p.rank===rank).map((player, index)=>
+    const AllPlayers = loadedPlayers.filter(p=>p.rank===rank)
+    .filter(p => {
+        if (query === '') 
+        {
+          return true;
+        } 
+        else if(p.fName.toLowerCase().includes(query.toLowerCase()) ||
+                p.lName.toLowerCase().includes(query.toLowerCase())) 
+        {
+              return true;
+                         
+        }
+          return false;
+        }
+    )
+    .map((player, index)=>
     {
         return (
                 <tr key={index}>
@@ -147,7 +163,9 @@ function ChoosePlayers(props) {
                     </td>
                 </tr>
         )
-    }    
+    }
+    
+    
 )
 
     return (
@@ -156,6 +174,9 @@ function ChoosePlayers(props) {
                 <h1>Choose Players</h1>
                 <h4>You have to choose ({props.numOfTeams} players) from rank {rank}</h4>
                 <h5>Number of players: {playersListPerRank.length}</h5>
+                <div className={"centered"}>
+                    <input placeholder="Fillter by name"  onChange={event => setQuery(event.target.value)} style={{width:"200px"}}></input>
+                </div>
                 <table>
                     <tbody>   
                    {AllPlayers}

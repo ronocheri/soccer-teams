@@ -8,6 +8,7 @@ function AllPlayersPage() {
 
       const [isLoading, setIsLoading] = useState(true);
       const [loadedPlayers, setLoadedPlayers] = useState([]);
+      const [query, setQuery] = useState("")
 
       useEffect(() => {
         setIsLoading(true);
@@ -50,9 +51,28 @@ function AllPlayersPage() {
 
             <div>
               <h1>All Players</h1>
+              <div className={"centered"}>
+                    <input placeholder="Fillter by name"  onChange={event => setQuery(event.target.value)} style={{width:"200px"}}></input>
+                </div>
               <table>
               <tbody>
-               {loadedPlayers.map((player, index)=>
+               {
+               
+               loadedPlayers.filter(p => {
+                if (query === '') 
+                {
+                  return true;
+                } 
+                else if(p.fName.toLowerCase().includes(query.toLowerCase()) ||
+                        p.lName.toLowerCase().includes(query.toLowerCase())) 
+                {
+                      return true;
+                                 
+                }
+                  return false;
+                }
+            )
+               .map((player, index)=>
                 {
                     return (
                             <tr key={index}>

@@ -70,11 +70,9 @@ function NewPlayerForm(props) {
 
   //limit the rabk to 1-5
   const rankChange = event => {
-    if(event.target.value>5)
-      setRank(5)
-    else if(event.target.value<1)
-      setRank(1)
-    else       
+    if(rank>5 || rank<1)
+      alert("Rank must be between 1-5")   
+    else
       setRank(event.target.value)
   }
 
@@ -115,7 +113,7 @@ function NewPlayerForm(props) {
           <label htmlFor='rank'>Rank</label>
           </td>
           <td>
-          <input type="number" pattern="[1-5]*"  required id='rank' ref={rankInputRef} value={rank} onChange={rankChange}/>
+          <input type="number"  min="1" max="5" required id='rank' ref={rankInputRef} value={rank} onChange={rankChange}/>
           </td>
           </tr>
           </tbody>

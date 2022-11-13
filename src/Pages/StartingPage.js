@@ -10,17 +10,23 @@ function StartingPage() {
 
     //handle number of teams change 
     function handleChange(event) {
-        console.log(event.target.value);
-        if(event.target.value>4)
-            setTNumOfTeams(4)
-        else if(event.target.value<2)
-            setTNumOfTeams(2)
-        else
+        // console.log(event.target.value);
+        // if(event.target.value>4)
+        //     setTNumOfTeams(4)
+        // else if(event.target.value<2)
+        //     setTNumOfTeams(2)
+        // else
             setTNumOfTeams(event.target.value)            
       }
 
       //handle clicking the next button
       function goNext(event) {
+        if(numOfTeams<2 || numOfTeams>4)
+        {
+            alert("You must choose between 2-4 teams")
+            return;
+        }
+    
         setShowMainScreen(true)
         setShowTeammsScreen(false)
       }
@@ -56,7 +62,7 @@ function StartingPage() {
                 <div>
                     <div>
                         <h1>How many teams are particpating in this game?</h1>
-                        <input  type="number" pattern="[2-4]*" value={numOfTeams} onInput={handleChange} />
+                        <input  type="number"  min="2" max="4" value={numOfTeams} onInput={handleChange} />
 
                         <br/>
                         <button onClick={goNext}>Next</button> <br/>
