@@ -50,7 +50,7 @@ function PlayerDetails(props) {
                 {!props.hideEditSymbool &&<  EditIcon onClick={event => editPlayerClick(props.player)} sx={{ fontSize: 32, color: "green" }}/>
             }</h3>
             <p>Rank: {props.player.rank}</p>
-            <img src={props.player.imageURL} alt={props.player.imageURL} ></img><br></br>
+            <img src={props.player.imageURL} alt={props.player.imageURL} width="250px"></img><br></br>
             <input type="checkbox" onChange={handleCheckBoxClick} checked={isAdded} id={props.player.id} className='checkBoxPlayer' hidden={props.hideCheckbox}></input>
             {/* {toAdd &&<button id={props.player.id} onClick={addPlayer}>+</button>}<br/>
             {!toAdd &&<button onClick={deletePlayer}>-</button>} */}

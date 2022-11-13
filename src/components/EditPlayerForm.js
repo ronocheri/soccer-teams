@@ -74,7 +74,7 @@ function EditPlayerForm(props) {
           <label htmlFor='image'>Image</label>
           </td>
             <td>
-          <input type='url'  id='image' value={imageURL} onChange={imageChange}/>
+          <input type='url'  id='image' maxlength="500" value={imageURL} onChange={imageChange}/>
           </td>
           </tr>
 
