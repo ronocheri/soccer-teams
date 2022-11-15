@@ -175,7 +175,7 @@ function ChoosePlayers(props) {
                 <h4>You have to choose ({props.numOfTeams} players) from rank {rank}</h4>
                 <h5>Number of players: {playersListPerRank.length}</h5>
                 <div className={"centered"}>
-                    <input placeholder="Fillter by name"  onChange={event => setQuery(event.target.value)} style={{width:"200px"}}></input>
+                    <input placeholder="Fillter by name"  onChange={event => setQuery(event.target.value)} style={{width:"200px"}} hidden></input>
                 </div>
                 <table>
                     <tbody>   
