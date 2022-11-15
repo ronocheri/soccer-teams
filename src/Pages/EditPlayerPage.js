@@ -27,7 +27,11 @@ function EditPlayerPage() {
    }
 
     function EditPlayerPageHandler(player) {
-
+      if(player.rank>5 || player.rank<1)
+      {
+        alert("Rank must be between 1-5")
+        return
+      }
       set(ref(db, 'players/' + player.id), player)
       .then(() => {
         alert("Player was edited successfully!")

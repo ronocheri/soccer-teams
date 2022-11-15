@@ -70,9 +70,6 @@ function NewPlayerForm(props) {
 
   //limit the rabk to 1-5
   const rankChange = event => {
-    if(rank>5 || rank<1)
-      alert("Rank must be between 1-5")   
-    else
       setRank(event.target.value)
   }
 

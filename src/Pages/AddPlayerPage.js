@@ -24,6 +24,11 @@ function AddPlayerPage() {
 
 
     function addPlayerHandler(player) {
+      if(player.rank>5 || player.rank<1)
+      {
+        alert("Rank must be between 1-5")
+        return
+      }
 //         console.log("AddPlayerPage")
 //         let tempArray=[]
 //         tempArray=PLAYERS

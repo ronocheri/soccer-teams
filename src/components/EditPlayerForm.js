@@ -38,9 +38,6 @@ function EditPlayerForm(props) {
   }
 
   const rankChange = event => {
-    if(rank>5 || rank<1)
-      alert("Rank must be between 1-5")   
-    else
         setRank(event.target.value);
   }
 
@@ -72,7 +69,7 @@ function EditPlayerForm(props) {
           <label htmlFor='image'>Image</label>
           </td>
             <td>
-          <input type='url'  id='image' maxlength="500" value={imageURL} onChange={imageChange}/>
+          <input type='url'  id='image' maxLength="500" value={imageURL} onChange={imageChange}/>
           </td>
           </tr>
 
