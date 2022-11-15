@@ -121,11 +121,11 @@ function TeamsDivision(props) {
                </table>
             :""}
 
-            {props.numOfTeams===4? 
+            {props.numOfTeams==4? 
             <h3>Team D</h3>
             :""}
 
-            {props.numOfTeams===4? 
+            {props.numOfTeams==4? 
             <table>
               <thead>
               <tr>
